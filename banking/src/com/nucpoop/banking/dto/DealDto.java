@@ -5,6 +5,10 @@ public class DealDto {
 	private String dealType;
 	private int price;
 	
+	public DealDto() {
+		
+	}
+	
 	public DealDto(int userKey, String dealType, int price) {
 		this.userKey = userKey;
 		this.dealType = dealType;

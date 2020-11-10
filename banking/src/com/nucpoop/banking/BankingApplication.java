@@ -54,7 +54,10 @@ public class BankingApplication {
 
 			case 'D':
 			case 'd':
-				
+				System.out.println("previous transaction >>");
+				DealDto temp = DBManager.getInstance().getPreviousTransaction(userDto);
+				System.out.println("deal : " + temp.getDealType() + " price : " + temp.getPrice());
+				scanner.nextLine();
 				break;
 			default:
 				isEnd = true;

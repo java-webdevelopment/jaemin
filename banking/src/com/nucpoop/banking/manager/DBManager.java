@@ -62,9 +62,10 @@ public class DBManager {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
 		}
 	}
-	
+
 	public int getUserKey(String id) {
 		String sql = "select userKey from User where id=?";
+
 		try {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, id);
@@ -80,6 +81,7 @@ public class DBManager {
 
 	public int getBalance(UserDto userDto) {
 		String sql = "select balance from User where id=?";
+
 		try {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, userDto.getId());
@@ -92,9 +94,10 @@ public class DBManager {
 			return 0;
 		}
 	}
-	
+
 	public void updateBalance(UserDto userDto) {
 		String sql = "update User set balance = ? where userkey = ?";
+
 		try {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setInt(1, userDto.getBalance());
@@ -104,15 +107,37 @@ public class DBManager {
 		} catch (SQLException e) {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
 		}
-		
+
 	}
-	
+
+	public DealDto getPreviousTransaction(UserDto userDto) {
+		DealDto dealDto = new DealDto();
+		String sql = "select * from Trans where userKey=?";
+
+		try {
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, userDto.getUserKey());
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				resultSet.last();
+				dealDto.setPrice(resultSet.getInt("price"));
+				dealDto.setDealType(resultSet.getString("dealType"));
+				;
+			}
+
+		} catch (SQLException e) {
+			System.out.println("[SQL Error : " + e.getMessage() + "]");
+		}
+		return dealDto;
+	}
+
 	public void insertTransaction(DealDto dealDto) {
 		String sql = "insert into Trans(userKey, dealType, price) values (?,?,?)";
 
 		try {
 			preparedStatement = conn.prepareStatement(sql);
-			preparedStatement.setInt(1,dealDto.getUserKey() );
+			preparedStatement.setInt(1, dealDto.getUserKey());
 			preparedStatement.setString(2, dealDto.getDealType());
 			preparedStatement.setInt(3, dealDto.getPrice());
 			preparedStatement.executeUpdate();
@@ -125,7 +150,7 @@ public class DBManager {
 	public LoginState signIn(UserDto userDto) {
 		String sql = "select pw from User where id=?";
 
-		try { 
+		try {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, userDto.getId());
 			resultSet = preparedStatement.executeQuery();
