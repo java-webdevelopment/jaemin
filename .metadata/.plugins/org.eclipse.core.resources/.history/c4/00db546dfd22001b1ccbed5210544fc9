@@ -1,9 +1,0 @@
-package com.nucpoop.banking;
-
-public enum LoginState {
-	OFFLINE,
-	SUCCESS,
-	incorrectPassword,
-	notFoundID,
-	error
-}

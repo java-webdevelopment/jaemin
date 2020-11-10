@@ -1,9 +1,0 @@
-1604932790364	Rename compilation unit 'bankingApplication.java'
-1604968895686	Delete element
-1604971258305	Delete element
-1604971365773	Rename type 'userDto'
-1604975678371	Rename enum constant 'offline'
-1604975697682	Rename enum constant 'success'
-1604975742134	Rename enum constant 'incorrectPassword'
-1604975755385	Rename enum constant 'notFoundID'
-1604975762643	Rename enum constant 'error'
