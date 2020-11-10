@@ -90,10 +90,10 @@ public class LoginManager {
 		case INCORRECT_PASSWORD:
 			System.out.println("[ Incorrect Password ]");
 			break;
-		case NOT_FOUND_ID:
+		case notFoundID:
 			System.out.println("[ Not valed ID ]");
 			break;
-		case ERROR:
+		case error:
 			System.out.println("[ Not valed ID ]");
 			break;
 		}

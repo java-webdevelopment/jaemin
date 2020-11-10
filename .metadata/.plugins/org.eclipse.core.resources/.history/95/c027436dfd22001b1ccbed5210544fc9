@@ -74,15 +74,15 @@ public class DBManager {
 				if(resultSet.getString(1).equals(userDto.getPw())) {
 					return LoginState.SUCCESS;
 				}else {
-					return LoginState.INCORRECT_PASSWORD;
+					return LoginState.incorrectPassword;
 				}
 			}
-			return LoginState.NOT_FOUND_ID;
+			return LoginState.notFoundID;
 			
 
 		} catch (SQLException e) {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
-			return LoginState.ERROR;
+			return LoginState.error;
 		}
 	}
 }

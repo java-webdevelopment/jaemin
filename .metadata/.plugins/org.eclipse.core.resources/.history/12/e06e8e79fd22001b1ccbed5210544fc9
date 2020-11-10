@@ -5,5 +5,5 @@ public enum LoginState {
 	SUCCESS,
 	INCORRECT_PASSWORD,
 	NOT_FOUND_ID,
-	ERROR
+	error
 }

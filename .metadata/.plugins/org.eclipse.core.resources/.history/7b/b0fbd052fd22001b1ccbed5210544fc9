@@ -24,7 +24,7 @@ public class LoginManager {
 	}
 
 	public String process() {
-		while (result != LoginState.SUCCESS) {
+		while (result != LoginState.success) {
 
 			System.out.println("Account");
 			System.out.println("======================");
@@ -84,16 +84,16 @@ public class LoginManager {
 		result = DBManager.getInstance().signIn(userDto);
 
 		switch (result) {
-		case SUCCESS:
+		case success:
 			this.id = id;
 			break;
-		case INCORRECT_PASSWORD:
+		case incorrectPassword:
 			System.out.println("[ Incorrect Password ]");
 			break;
-		case NOT_FOUND_ID:
+		case notFoundID:
 			System.out.println("[ Not valed ID ]");
 			break;
-		case ERROR:
+		case error:
 			System.out.println("[ Not valed ID ]");
 			break;
 		}

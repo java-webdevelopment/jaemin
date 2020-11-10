@@ -82,7 +82,7 @@ public class DBManager {
 
 		} catch (SQLException e) {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
-			return LoginState.ERROR;
+			return LoginState.error;
 		}
 	}
 }

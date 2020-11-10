@@ -93,7 +93,7 @@ public class LoginManager {
 		case NOT_FOUND_ID:
 			System.out.println("[ Not valed ID ]");
 			break;
-		case ERROR:
+		case error:
 			System.out.println("[ Not valed ID ]");
 			break;
 		}

@@ -87,13 +87,13 @@ public class LoginManager {
 		case SUCCESS:
 			this.id = id;
 			break;
-		case INCORRECT_PASSWORD:
+		case incorrectPassword:
 			System.out.println("[ Incorrect Password ]");
 			break;
-		case NOT_FOUND_ID:
+		case notFoundID:
 			System.out.println("[ Not valed ID ]");
 			break;
-		case ERROR:
+		case error:
 			System.out.println("[ Not valed ID ]");
 			break;
 		}
