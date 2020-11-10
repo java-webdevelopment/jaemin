@@ -61,24 +61,39 @@ public class DBManager {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
 		}
 	}
-	
+
+	public int getBalance(String id) {
+		String sql = "select balance from User where id=?";
+		try {
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+			resultSet = preparedStatement.executeQuery();
+
+			return (resultSet.next()) ? resultSet.getInt(1) : 0;
+
+		} catch (SQLException e) {
+			System.out.println("[SQL Error : " + e.getMessage() + "]");
+			return 0;
+		}
+
+	}
+
 	public LoginState signIn(UserDto userDto) {
 		String sql = "select pw from User where id=?";
-		
-		try {
+
+		try { 
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, userDto.getId());
 			resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()) {
-				if(resultSet.getString(1).equals(userDto.getPw())) {
+
+			if (resultSet.next()) {
+				if (resultSet.getString(1).equals(userDto.getPw())) {
 					return LoginState.SUCCESS;
-				}else {
+				} else {
 					return LoginState.INCORRECT_PASSWORD;
 				}
 			}
 			return LoginState.NOT_FOUND_ID;
-			
 
 		} catch (SQLException e) {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");

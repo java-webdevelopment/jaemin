@@ -86,6 +86,7 @@ public class LoginManager {
 		switch (result) {
 		case SUCCESS:
 			this.id = id;
+			System.out.println("[ Login Complete ]");
 			break;
 		case INCORRECT_PASSWORD:
 			System.out.println("[ Incorrect Password ]");
