@@ -61,7 +61,9 @@ public class BankingApplication {
 				break;
 			default:
 				isEnd = true;
+				DBManager.getInstance().closeDB();
 				break;
+
 			}
 		}
 	}
@@ -75,7 +77,7 @@ public class BankingApplication {
 		DBManager.getInstance().insertTransaction(deal);
 		DBManager.getInstance().updateBalance(user);
 	}
-	
+
 	private static void withdraw(int price, UserDto user) {
 		int current = DBManager.getInstance().getBalance(user);
 		DealDto deal = new DealDto(user.getUserKey(), "withdraw", price);

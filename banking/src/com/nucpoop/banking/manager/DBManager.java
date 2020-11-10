@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
+
 import com.nucpoop.banking.LoginState;
 import com.nucpoop.banking.dto.DealDto;
 import com.nucpoop.banking.dto.UserDto;
@@ -168,5 +170,24 @@ public class DBManager {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
 			return LoginState.ERROR;
 		}
+	}
+
+	public void closeDB() {
+		if (resultSet != null) {
+			try {
+				resultSet.close();
+			} catch (SQLException ex) {
+			}
+		}
+		if (preparedStatement != null)
+			try {
+				preparedStatement.close();
+			} catch (SQLException ex) {
+			}
+		if (conn != null)
+			try {
+				conn.close();
+			} catch (SQLException ex) {
+			}
 	}
 }
