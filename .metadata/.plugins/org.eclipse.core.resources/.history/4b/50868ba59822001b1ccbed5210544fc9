@@ -1,0 +1,10 @@
+package com.nucpoop.banking;
+
+public class bankingApplication {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

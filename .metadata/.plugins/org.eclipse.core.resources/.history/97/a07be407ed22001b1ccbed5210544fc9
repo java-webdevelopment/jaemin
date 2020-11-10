@@ -1,0 +1,10 @@
+package com.nucpoop.banking.manager;
+
+public class Manager {
+	protected static Manager instance = new Manager();
+	
+	public static Manager getInstance() {
+		return instance;
+	}
+	
+}

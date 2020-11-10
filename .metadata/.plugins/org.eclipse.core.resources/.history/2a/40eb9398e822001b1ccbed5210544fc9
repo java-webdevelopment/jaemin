@@ -1,0 +1,13 @@
+package com.nucpoop.banking;
+
+import com.nucpoop.banking.manager.DBManager;
+
+public class BankingApplication {
+
+	public static void main(String[] args) {
+		
+		DBManager.getInstance().test();
+		System.out.println("hello");
+	}
+
+}

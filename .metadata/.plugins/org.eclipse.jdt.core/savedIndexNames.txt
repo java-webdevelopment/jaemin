@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+/Users/nucpoop/Documents/javaconsole/banking/.metadata/.plugins/org.eclipse.jdt.core
+4039371887.index

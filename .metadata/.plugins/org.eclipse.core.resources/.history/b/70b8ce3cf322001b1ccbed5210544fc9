@@ -1,0 +1,5 @@
+package com.nucpoop.banking.dto;
+
+public class userDto {
+
+}

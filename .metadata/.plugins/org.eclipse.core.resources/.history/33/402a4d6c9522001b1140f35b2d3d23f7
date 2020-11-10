@@ -1,0 +1,14 @@
+package com.nucpoop.banking.manager;
+
+public class DBManager {
+	private static DBManager instance = new DBManager();
+
+    private DBManager(){
+
+    }
+
+    public static DBManager getInstance(){
+        return instance;
+    }
+
+}

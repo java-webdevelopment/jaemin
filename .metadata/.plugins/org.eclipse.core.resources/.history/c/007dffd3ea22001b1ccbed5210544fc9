@@ -1,0 +1,25 @@
+package com.nucpoop.banking.manager;
+
+import java.util.Scanner;
+
+public class LoginManager {
+
+	private static LoginManager instance = new LoginManager();
+	private Scanner scanner = new Scanner(System.in);
+
+	private LoginManager() {
+
+	}
+
+	public static LoginManager getInstance() {
+		return instance;
+	}
+	
+	public void init() {
+		System.out.println("Login");
+		System.out.println("======================");
+		System.out.println("1. Create account");
+		System.out.println("2. Sign in");
+		System.out.print("Select menu >>");
+	}
+}
