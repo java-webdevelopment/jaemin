@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.nucpoop.banking.LoginState;
+import com.nucpoop.banking.dto.DealDto;
 import com.nucpoop.banking.dto.UserDto;
 
 public class DBManager {
@@ -61,9 +62,9 @@ public class DBManager {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
 		}
 	}
-
-	public int getBalance(String id) {
-		String sql = "select balance from User where id=?";
+	
+	public int getUserKey(String id) {
+		String sql = "select userKey from User where id=?";
 		try {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, id);
@@ -75,7 +76,50 @@ public class DBManager {
 			System.out.println("[SQL Error : " + e.getMessage() + "]");
 			return 0;
 		}
+	}
 
+	public int getBalance(UserDto userDto) {
+		String sql = "select balance from User where id=?";
+		try {
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, userDto.getId());
+			resultSet = preparedStatement.executeQuery();
+
+			return (resultSet.next()) ? resultSet.getInt(1) : 0;
+
+		} catch (SQLException e) {
+			System.out.println("[SQL Error : " + e.getMessage() + "]");
+			return 0;
+		}
+	}
+	
+	public void updateBalance(UserDto userDto) {
+		String sql = "update User set balance = ? where userkey = ?";
+		try {
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, userDto.getBalance());
+			preparedStatement.setInt(2, userDto.getUserKey());
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("[SQL Error : " + e.getMessage() + "]");
+		}
+		
+	}
+	
+	public void insertTransaction(DealDto dealDto) {
+		String sql = "insert into Trans(userKey, dealType, price) values (?,?,?)";
+
+		try {
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1,dealDto.getUserKey() );
+			preparedStatement.setString(2, dealDto.getDealType());
+			preparedStatement.setInt(3, dealDto.getPrice());
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("[SQL Error : " + e.getMessage() + "]");
+		}
 	}
 
 	public LoginState signIn(UserDto userDto) {
