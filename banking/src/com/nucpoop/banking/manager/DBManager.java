@@ -65,12 +65,12 @@ public class DBManager {
 		}
 	}
 
-	public int getUserKey(String id) {
+	public int getUserKey(UserDto userDto) {
 		String sql = "select userKey from User where id=?";
 
 		try {
 			preparedStatement = conn.prepareStatement(sql);
-			preparedStatement.setString(1, id);
+			preparedStatement.setString(1, userDto.getId());
 			resultSet = preparedStatement.executeQuery();
 
 			return (resultSet.next()) ? resultSet.getInt(1) : 0;

@@ -15,7 +15,7 @@ public class LoginManager {
 
 	private LoginManager() {
 		input = "";
-		id ="";
+		id = "";
 		result = LoginState.OFFLINE;
 	}
 

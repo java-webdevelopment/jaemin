@@ -4,11 +4,11 @@ public class DealDto {
 	private int userKey;
 	private String dealType;
 	private int price;
-	
+
 	public DealDto() {
-		
+
 	}
-	
+
 	public DealDto(int userKey, String dealType, int price) {
 		this.userKey = userKey;
 		this.dealType = dealType;
@@ -38,5 +38,5 @@ public class DealDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
 }

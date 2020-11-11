@@ -11,19 +11,15 @@ public class BankingApplication {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		int userKey = 0;
-		String id = "";
+		UserDto userDto = new UserDto();
 		String input = "";
 		boolean isEnd = false;
-		UserDto userDto = new UserDto();
 
 		DBManager.getInstance().init();
-		id = LoginManager.getInstance().process();
-		userKey = DBManager.getInstance().getUserKey(id);
-		userDto.setId(id);
-		userDto.setUserKey(userKey);
+		userDto.setId(LoginManager.getInstance().process());
+		userDto.setUserKey(DBManager.getInstance().getUserKey(userDto));
 		userDto.setBalance(DBManager.getInstance().getBalance(userDto));
-		System.out.println("[ USER : " + id + " ]");
+		System.out.println("[ USER : " + userDto.getId() + " ]");
 
 		while (!isEnd) {
 			intro();
@@ -35,6 +31,7 @@ public class BankingApplication {
 			case 'A':
 			case 'a':
 				System.out.println("[ Balance : " + userDto.getBalance() + " ] ");
+				System.out.println(">> input Enter to skip <<");
 				scanner.nextLine();
 				break;
 
@@ -57,8 +54,10 @@ public class BankingApplication {
 				System.out.println("previous transaction >>");
 				DealDto temp = DBManager.getInstance().getPreviousTransaction(userDto);
 				System.out.println("deal : " + temp.getDealType() + " price : " + temp.getPrice());
+				System.out.println(">> input Enter to skip <<");
 				scanner.nextLine();
 				break;
+				
 			default:
 				isEnd = true;
 				DBManager.getInstance().closeDB();
